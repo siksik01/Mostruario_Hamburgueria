@@ -18,6 +18,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import comboImage from "@/assets/combo.jpg";
 import heroImage from "@/assets/hero-burger.jpg";
 import kitchenImage from "@/assets/kitchen-prep.jpg";
@@ -40,6 +41,13 @@ const reviews = [
   ["Ambiente incrível, atendimento rápido e o hambúrguer estava perfeito.", "Mariana R."],
   ["O BBQ Burger virou meu favorito. Com certeza vou voltar.", "Pedro A."],
 ] as const;
+
+const features: Array<{ icon: LucideIcon; title: string; text: string }> = [
+  { icon: Beef, title: "Carne artesanal", text: "Produzida com ingredientes selecionados." },
+  { icon: Sparkles, title: "Ingredientes frescos", text: "Tudo preparado com cuidado." },
+  { icon: Flame, title: "Batata crocante", text: "Dourada, crocante e irresistível." },
+  { icon: Zap, title: "Feito na hora", text: "Seu pedido preparado especialmente para você." },
+];
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -120,13 +128,8 @@ export function RestaurantSite() {
 
       <section className="bg-brand-charcoal text-cream">
         <div className="site-container grid sm:grid-cols-2 xl:grid-cols-4">
-          {[
-            [Beef, "Carne artesanal", "Produzida com ingredientes selecionados."],
-            [Sparkles, "Ingredientes frescos", "Tudo preparado com cuidado."],
-            [Flame, "Batata crocante", "Dourada, crocante e irresistível."],
-            [Zap, "Feito na hora", "Seu pedido preparado especialmente para você."],
-          ].map(([Icon, title, text], index) => (
-            <div key={title as string} className="feature-item" data-reveal style={{ transitionDelay: `${index * 70}ms` }}><Icon className="size-7 text-primary" /><div><h3>{title as string}</h3><p>{text as string}</p></div></div>
+          {features.map(({ icon: Icon, title, text }, index) => (
+            <div key={title} className="feature-item" data-reveal style={{ transitionDelay: `${index * 70}ms` }}><Icon className="size-7 text-primary" /><div><h3>{title}</h3><p>{text}</p></div></div>
           ))}
         </div>
       </section>

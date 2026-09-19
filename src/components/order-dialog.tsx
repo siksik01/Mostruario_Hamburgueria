@@ -13,7 +13,7 @@ import { formatPrice, products } from "@/data/restaurant";
 type OrderDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  initialProductId?: string;
+  initialProductId?: string | undefined;
 };
 
 export function OrderDialog({ open, onOpenChange, initialProductId }: OrderDialogProps) {
